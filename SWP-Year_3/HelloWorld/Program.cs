@@ -1,20 +1,27 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
+﻿using System;
+using System.Globalization;
 
+class Program {
+    static void Main(string[] args) {
+        Console.WriteLine("Bitte geben Sie einen Wert ein:");
+        string input = Console.ReadLine();
 
-bool isInput = true;
-
-Console.WriteLine("Dieses Programm können Sie beenden, indem sie Beenden eingeben.");
-
-while (isInput) {
-    string input = Console.ReadLine();
-        if (int.TryParse(input, out int output)) {
-            int input2 = int.Parse(input);
-            Console.WriteLine("Deine Zahl wurde um 1 vergrößert: ");
-            Console.Write(input2 + 1);
+        if (bool.TryParse(input, out bool boolValue)) {
+            Console.WriteLine($"Der eingegebene Wert ist vom Typ: Bool (Wahr/Falsch)");
+            Console.WriteLine($"Initialisierte Variable: {boolValue}");
         }
-    if (input == "Beenden") {
-        isInput = false;
+        else if (int.TryParse(input, out int intValue)) {
+            Console.WriteLine($"Der eingegebene Wert ist vom Typ: Integer (Ganzzahl)");
+            Console.WriteLine($"Initialisierte Variable: {intValue}");
+        }
+        else if (double.TryParse(input, NumberStyles.Float, CultureInfo.InvariantCulture, out double doubleValue)) {
+            Console.WriteLine($"Der eingegebene Wert ist vom Typ: Double (Kommazahl)");
+            Console.WriteLine($"Initialisierte Variable: {doubleValue}");
+        }
+        else if (DateTime.TryParse(input, out DateTime dateValue)) {
+            Console.WriteLine($"Der eingegebene Wert ist vom Typ: Datum");
+            Console.WriteLine($"Initialisierte Variable: {dateValue.ToShortDateString()}");
+        }
     }
 }
 
