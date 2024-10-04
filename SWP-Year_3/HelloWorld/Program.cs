@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Reflection.Metadata.Ecma335;
 
-
 Console.WriteLine("Geben Sie eine Zahl ein");
 string wertA = Console.ReadLine();
 
