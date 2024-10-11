@@ -1,20 +1,14 @@
-﻿using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
+﻿int SelbstlautCounter = 0;
+var Selbstlaut = new HashSet<char> { 'a', 'e', 'i', 'o', 'u' };
 
+Console.WriteLine("Geben Sie einen satz ein");
+string BenutzerEingabe = Console.ReadLine().ToLower();
 
-bool isInput = true;
-
-Console.WriteLine("Dieses Programm können Sie beenden, indem sie Beenden eingeben.");
-
-while (isInput) {
-    string input = Console.ReadLine();
-        if (int.TryParse(input, out int output)) {
-            int input2 = int.Parse(input);
-            Console.WriteLine("Deine Zahl wurde um 1 vergrößert: ");
-            Console.Write(input2 + 1);
-        }
-    if (input == "Beenden") {
-        isInput = false;
+for (int i = 0; i < BenutzerEingabe.Length; i++)
+{
+    if (Selbstlaut.Contains(BenutzerEingabe[i]))
+    {
+        SelbstlautCounter++;
     }
 }
-
+Console.WriteLine("In Ihrem Satz befinden sich " + SelbstlautCounter + " Selbstlaute");
