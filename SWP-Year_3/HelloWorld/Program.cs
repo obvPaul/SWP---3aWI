@@ -32,3 +32,19 @@ else if (check ==3) {
         }
     Console.WriteLine("Ihr Ergebnis lautet: " + fakultaet);
 }
+Console.WriteLine("Geben Sie einen Text ein");
+string BenutzerEingabe = Console.ReadLine();
+
+string[] Buchstaben = BenutzerEingabe.Split();
+Console.WriteLine(Buchstaben);
+string Ausgabe = "";
+
+for (int i = 0; i <= Buchstaben.Length; i++) {
+    if (Buchstaben[i] == "a" || Buchstaben[i] == "e" || Buchstaben[i] == "i" || Buchstaben[i] == "o" || Buchstaben[i] == "u")
+    {
+        Ausgabe = Ausgabe + Buchstaben[i];
+    }
+    else {
+
+    }
+}
