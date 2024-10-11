@@ -1,4 +1,5 @@
 ﻿int SelbstlautCounter = 0;
+string SelbstlautAusgabe = "";
 var Selbstlaut = new HashSet<char> { 'a', 'e', 'i', 'o', 'u' };
 
 Console.WriteLine("Geben Sie einen satz ein");
@@ -9,6 +10,8 @@ for (int i = 0; i < BenutzerEingabe.Length; i++)
     if (Selbstlaut.Contains(BenutzerEingabe[i]))
     {
         SelbstlautCounter++;
+        SelbstlautAusgabe += BenutzerEingabe[i];
     }
 }
 Console.WriteLine("In Ihrem Satz befinden sich " + SelbstlautCounter + " Selbstlaute");
+Console.WriteLine("Die eingegebenen Selbstlaute lauten " + SelbstlautAusgabe);
