@@ -15,30 +15,35 @@ if (Nummer == true) {
         Console.WriteLine("Geben Sie nun Ihre zweite Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer2);
         Console.WriteLine("Ihr Ergebnis lautet: " + Nummer1 * Nummer2);
-    } else if (Rechnung == 2) {
+    } 
+    else if (Rechnung == 2) {
         Console.WriteLine("Geben Sie Ihre erste Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer1);
         Console.WriteLine("Geben Sie nun Ihre zweite Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer2);
         Console.WriteLine("Ihr Ergebnis lautet: " + Nummer1 / Nummer2);
-    } else if (Rechnung == 3) {
+    } 
+    else if (Rechnung == 3) {
         Console.WriteLine("Geben Sie Ihre erste Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer1);
         Console.WriteLine("Geben Sie nun Ihre zweite Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer2);
         int Addition = Nummer1 + Nummer2;
         Console.WriteLine("Ihr Ergebnis lautet: " + Addition);
-    } else if (Rechnung == 4) {
+    } 
+    else if (Rechnung == 4) {
         Console.WriteLine("Geben Sie Ihre erste Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer1);
         Console.WriteLine("Geben Sie nun Ihre zweite Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer2);
         Console.WriteLine("Ihr Ergebnis lautet: " + Math.Pow(Nummer1, Nummer2));
-    } else if (Rechnung == 5) {
+    } 
+    else if (Rechnung == 5) {
         Console.WriteLine("Geben Sie Ihre erste Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer1);
         Console.WriteLine("Ihr Ergebnis lautet: " + Math.Sqrt(Nummer1));
-    } else if (Rechnung == 6) {
+    } 
+    else if (Rechnung == 6) {
         Console.WriteLine("Geben Sie Ihre erste Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer1);
         double fakultaet = 1;
@@ -46,11 +51,13 @@ if (Nummer == true) {
             fakultaet *= i;
         }
         Console.WriteLine("Ihr Ergebnis lautet: " + fakultaet);
-    } else if (Rechnung == 7) {
+    } 
+    else if (Rechnung == 7) {
         Console.WriteLine("Geben Sie Ihre erste Zahl ein");
             int.TryParse(Console.ReadLine(), out Nummer1);
         Console.WriteLine("Ihr Ergebnis lautet: " + -Nummer1);
-    } else {
+    } 
+    else {
         Console.Write("Sie haben keine gültige Zahl eingegeben");
     }
 }
