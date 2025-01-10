@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Test_02_Schule
 {
-    class Schüler {
+    public class Schueler : Person 
+    {
         public string Schulklasse { get; set; }
     }
 }

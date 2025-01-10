@@ -6,9 +6,16 @@ using System.Threading.Tasks;
 
 namespace Test_02_Schule
 {
-    class Klassenraum {
-        private int Größe {  get; set; }
-        private bool Cynap { get; set; }
-        private bool Besetzung { get; set; }
+    public class Klassenraum 
+    {
+        public double Laenge {  get; set; }
+        public double Breite { get; set; }
+        public bool Cynap { get; set; }
+        public int AnzahlPlaetze { get; set; }
+        public double Größe()
+        {
+            return Laenge * Breite;
+        }
+
     }
 }

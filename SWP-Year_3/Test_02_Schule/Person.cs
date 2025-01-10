@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace Test_02_Schule
 {
-    class Person {
+    public class Person 
+    {
         public string Name { get; set; }
         public string Geschlecht { get; set; }
-        public DateTime Geburstdtaum { get; set; }
+        public DateTime Geburtsdatum { get; set; }
     }
 }
