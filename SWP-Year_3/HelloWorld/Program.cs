@@ -1,3 +1,22 @@
+topic/strings
+﻿int SelbstlautCounter = 0;
+string SelbstlautAusgabe = "";
+var Selbstlaut = new HashSet<char> { 'a', 'e', 'i', 'o', 'u' };
+
+Console.WriteLine("Geben Sie einen satz ein");
+string BenutzerEingabe = Console.ReadLine().ToLower();
+
+for (int i = 0; i < BenutzerEingabe.Length; i++)
+{
+    if (Selbstlaut.Contains(BenutzerEingabe[i]))
+    {
+        SelbstlautCounter++;
+        SelbstlautAusgabe += BenutzerEingabe[i];
+    }
+}
+Console.WriteLine("In Ihrem Satz befinden sich " + SelbstlautCounter + " Selbstlaute");
+Console.WriteLine("Die eingegebenen Selbstlaute lauten " + SelbstlautAusgabe);
+=======
 ﻿using System;
 topic/datentypen
 using System.Globalization;
@@ -137,5 +156,3 @@ main
 }
 else {
     Console.Write("Sie haben keine gültige Zahl eingegeben");
-main
-}
