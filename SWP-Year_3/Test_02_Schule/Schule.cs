@@ -89,31 +89,10 @@ namespace Test_02_Schule
         }
         public double AnteilFrauen()
         {
-            int maedchen = 0;
-            int jungs = 0;
-            int divers = 0;
-            int gesamtSchueler = 0;
+            if (SchuelerListe.Count == 0) return 0;
 
-            foreach (var schueler in SchuelerListe)
-            {
-                gesamtSchueler++;
-
-                if (schueler.Geschlecht.Equals("Weiblich", StringComparison.OrdinalIgnoreCase))
-                {
-                    maedchen++;
-                }
-                else if (schueler.Geschlecht.Equals("Männlich", StringComparison.OrdinalIgnoreCase))
-                {
-                    jungs++;
-                }
-                else
-                {
-                    divers++;
-                }
-            }
-            if (gesamtSchueler == 0) return 0;
-
-            return (maedchen / (double)gesamtSchueler) * 100;
+            return (SchuelerListe.Where(s => s.Geschlecht == "Weiblich").Count() / 
+                (double)SchuelerListe.Count()) * 100;
         }
 
     }
