@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 int IntAbfrage;
 int Eingabe2;
-int Addition;
+int ddieren;
 int Multiplikation;
 int Division;
 int Fakultaet = 1;
@@ -22,8 +22,8 @@ if (int.TryParse(Eingabe, out IntAbfrage))
     {
         Console.WriteLine("Sie haben eine 1 eingegeben und wollen somit addieren. Geben Sie die zweite Zahl ein, welche Sie addieren wollen.");
         int.TryParse(Console.ReadLine(), out Eingabe2);
-        Addition = IntAbfrage + Eingabe2;
-        Console.WriteLine("Ihr Ergebniss lautet " + Addition);
+        ddieren = IntAbfrage + Eingabe2;
+        Console.WriteLine("Ihr Ergebniss lautet " + ddieren);
     }
     else if (int.TryParse(MatheEingabe, out MatheRechnung) && MatheRechnung == 2)
     {
