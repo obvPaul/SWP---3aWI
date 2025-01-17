@@ -26,6 +26,54 @@ class Program {
 =======
 using System.Reflection.Metadata.Ecma335;
 
+topic/verknüpfungsoperatoren
+Console.WriteLine("Geben Sie eine Zahl ein");
+string wertA = Console.ReadLine();
+
+Console.WriteLine("Geben Sie eine 1 ein, wenn Sie quadrieren wollen, eine 2, wenn Sie eine Wurzel ziehen wollen und eine 3, wenn sie fakultieren möchten");
+string eingabe = Console.ReadLine();
+double check = Convert.ToDouble(eingabe);
+
+if (check == 1 ||check == 2 ||check == 3) {
+
+} 
+else {
+    Console.WriteLine("Die Zahl ist nicht Valid");
+}
+
+if (check == 1) {
+    Console.WriteLine("Geben Sie die zweite Zahl ein");
+    string wertB = Console.ReadLine();
+    Console.WriteLine("Ihr Ergebnis lautet: " + Math.Pow(Convert.ToDouble(wertA), Convert.ToDouble(wertB)));
+}
+else if (check == 2) {
+    Console.WriteLine("Ihr Ergebnis lautet: " + Math.Sqrt(Convert.ToDouble(wertA)));
+}
+else if (check ==3) {
+    double fakultaet = 1;
+        for (int i = 1; i <= Convert.ToDouble(wertA); i++)
+        {
+        fakultaet *= i;
+        
+        }
+    Console.WriteLine("Ihr Ergebnis lautet: " + fakultaet);
+}
+Console.WriteLine("Geben Sie einen Text ein");
+string BenutzerEingabe = Console.ReadLine();
+
+string[] Buchstaben = BenutzerEingabe.Split();
+Console.WriteLine(Buchstaben);
+string Ausgabe = "";
+
+for (int i = 0; i <= Buchstaben.Length; i++) {
+    if (Buchstaben[i] == "a" || Buchstaben[i] == "e" || Buchstaben[i] == "i" || Buchstaben[i] == "o" || Buchstaben[i] == "u")
+    {
+        Ausgabe = Ausgabe + Buchstaben[i];
+    }
+    else {
+
+    }
+=======
 Console.WriteLine($"Geben Sie die benötigte Zahl ein für Ihre gewünschte Mathematische Berechnung:\n1 zum Multiplizieren\n2 zum Dividieren\n3 zum Addieren\n4 zum Potenzieren\n5 zum Wurzelziehen\n6 zum Fakultieren\n7 zum Invertieren");
 string Eingabe = Console.ReadLine();
 int Rechnung;
@@ -89,4 +137,5 @@ main
 }
 else {
     Console.Write("Sie haben keine gültige Zahl eingegeben");
+main
 }
