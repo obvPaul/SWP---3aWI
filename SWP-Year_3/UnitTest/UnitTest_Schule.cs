@@ -63,7 +63,7 @@ namespace Test_02_Schule.Tests
         }
 
         [Test]
-        public void AnteilFrauen()
+        public void AnteilFrauen_Add2Male2FemaleStudents_Returns50Percent()
         {
             var schule = new Schule();
             var schueler1 = new Schueler { Name = "Onur", Geschlecht = "Männlich", Geburtsdatum = new DateTime(2007, 10, 15), Schulklasse = "3aWI" };
@@ -78,6 +78,15 @@ namespace Test_02_Schule.Tests
             double anteilFrauen = schule.AnteilFrauen();
 
             Assert.AreEqual(50.0, anteilFrauen, 0.1);
+        }
+
+        [Test]
+        public void AnteilFrauen_NoStudents_Returns0()
+        {
+            var schule = new Schule();
+            double anteilFrauen = schule.AnteilFrauen();
+
+            Assert.That(0.0 == anteilFrauen);
         }
     }
 }
