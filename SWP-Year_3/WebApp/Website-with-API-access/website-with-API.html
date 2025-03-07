@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Summenrechner</title>
+  </head>
+  <body>
+    <h1>Summenrechner</h1>
+    <label for="zahl1">Erste Zahl:</label>
+    <input type="number" id="zahl1" /><br /><br />
+
+    <label for="zahl2">Zweite Zahl:</label>
+    <input type="number" id="zahl2" /><br /><br />
+
+    <button onclick="berechneSumme()">Berechnen</button>
+
+    <h2>Ergebnis: <span id="ergebnis"></span></h2>
+
+    <script>
+      async function berechneSumme() {
+        let zahl1 = document.getElementById("zahl1").value;
+        let zahl2 = document.getElementById("zahl2").value;
+
+        let daten = {
+          Ausgangszahl: parseInt(zahl1),
+          Summant: parseInt(zahl2),
+        };
+        debugger;
+        try {
+          let response = await fetch(
+            "https://localhost:7128/api/Nummern/Summe",
+            {
+              method: "PUT",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(daten),
+            }
+          );
+
+          let result = await response.json();
+          document.getElementById("ergebnis").textContent = result.summe;
+        } catch (error) {
+          console.error("Fehler:", error);
+        }
+      }
+    </script>
+  </body>
+</html>
