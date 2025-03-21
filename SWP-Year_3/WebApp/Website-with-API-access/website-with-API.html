@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Summenrechner</title>
+    <title>Summenrechner & Schülerinformationen</title>
   </head>
   <body>
     <h1>Summenrechner</h1>
@@ -14,10 +14,40 @@
     <input type="number" id="zahl2" /><br /><br />
 
     <button onclick="berechneSumme()">Berechnen</button>
-
     <h2>Ergebnis: <span id="ergebnis"></span></h2>
 
+    <h1>Schülerliste</h1>
+    <button onclick="ladeSchueler()">Lade Schüler</button>
+    <ul id="schuelerListe"></ul>
+
+    <h1>Schüler hinzufügen</h1>
+    <label for="name">Name:</label>
+    <input type="text" id="name" /><br /><br />
+
+    <label for="geburtsdatum">Geburtsdatum:</label>
+    <input type="date" id="geburtsdatum" /><br /><br />
+
+    <label for="geschlecht">Geschlecht:</label>
+    <select id="geschlecht">
+      <option value="Männlich">Männlich</option>
+      <option value="Weiblich">Weiblich</option></select
+    ><br /><br />
+
+    <label for="klasse">Schulklasse:</label>
+    <input type="text" id="klasse" /><br /><br />
+
+    <button onclick="addSchueler()">Hinzufügen</button>
+
+    <h1>Statistiken</h1>
+    <button onclick="ladeDurchschnittsalter()">Durchschnittsalter</button>
+    <p id="durchschnittsalter"></p>
+
+    <button onclick="ladeGeschlecht()">Anzahl nach Geschlecht</button>
+    <p id="geschlechtStatistik"></p>
+
     <script>
+      const apiBaseUrl = "https://localhost:7128/School";
+
       async function berechneSumme() {
         let zahl1 = document.getElementById("zahl1").value;
         let zahl2 = document.getElementById("zahl2").value;
@@ -26,21 +56,95 @@
           Ausgangszahl: parseInt(zahl1),
           Summant: parseInt(zahl2),
         };
-        debugger;
+
         try {
           let response = await fetch(
-            "https://localhost:7128/api/Nummern/Summe",
+            "https://localhost:7128/api/nummern/Summe",
             {
               method: "PUT",
-              headers: {
-                "Content-Type": "application/json",
-              },
+              headers: { "Content-Type": "application/json" },
               body: JSON.stringify(daten),
             }
           );
 
+          if (!response.ok) {
+            throw new Error("Serverfehler!");
+          }
+
           let result = await response.json();
           document.getElementById("ergebnis").textContent = result.summe;
+        } catch (error) {
+          console.error("Fehler:", error);
+        }
+      }
+
+      async function ladeSchueler() {
+        try {
+          let response = await fetch(`${apiBaseUrl}/AlleSchueler`);
+          if (!response.ok) throw new Error("Fehler beim Laden der Schüler");
+
+          let schueler = await response.json();
+          let liste = document.getElementById("schuelerListe");
+          liste.innerHTML = "";
+
+          schueler.forEach((s) => {
+            let li = document.createElement("li");
+            li.textContent = `${s.name}, Geburtsdatum: ${s.geburtsdatum}, Geschlecht: ${s.geschlecht}, Klasse: ${s.schulklasse}`;
+            liste.appendChild(li);
+          });
+        } catch (error) {
+          console.error("Fehler:", error);
+        }
+      }
+
+      async function addSchueler() {
+        let name = document.getElementById("name").value;
+        let geburtsdatum = document.getElementById("geburtsdatum").value;
+        let geschlecht = document.getElementById("geschlecht").value;
+        let schulklasse = document.getElementById("klasse").value;
+
+        let neuerSchueler = { name, geburtsdatum, geschlecht, schulklasse };
+
+        try {
+          let response = await fetch(`${apiBaseUrl}/AddSchueler`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(neuerSchueler),
+          });
+
+          if (!response.ok) throw new Error("Fehler beim Hinzufügen");
+
+          ladeSchueler();
+        } catch (error) {
+          console.error("Fehler:", error);
+        }
+      }
+
+      async function ladeDurchschnittsalter() {
+        try {
+          let response = await fetch(`${apiBaseUrl}/Durchschnittsalter`);
+          if (!response.ok)
+            throw new Error("Fehler beim Laden des Durchschnittsalters");
+
+          let alter = await response.json();
+          document.getElementById(
+            "durchschnittsalter"
+          ).textContent = `Durchschnittsalter: ${alter.toFixed(2)} Jahre`;
+        } catch (error) {
+          console.error("Fehler:", error);
+        }
+      }
+
+      async function ladeGeschlecht() {
+        try {
+          let response = await fetch(`${apiBaseUrl}/Geschlecht`);
+          if (!response.ok)
+            throw new Error("Fehler beim Laden der Geschlechter-Statistik");
+
+          let geschlechtData = await response.json();
+          document.getElementById(
+            "geschlechtStatistik"
+          ).textContent = `Männlich: ${geschlechtData.m}, Weiblich: ${geschlechtData.w}`;
         } catch (error) {
           console.error("Fehler:", error);
         }
