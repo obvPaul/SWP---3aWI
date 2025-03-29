@@ -6,7 +6,7 @@ namespace WebApp.Controllers
     [Route("api/nummern")] // Feste API-Route setzen
     public class NummernController : ControllerBase
     {
-        [HttpPut("Summe")] // Korrekt auf POST ändern
+        [HttpPut("Summe")]
         public ActionResult<int> AddNumbers([FromBody] Summe summe)
         {
             if (summe == null)

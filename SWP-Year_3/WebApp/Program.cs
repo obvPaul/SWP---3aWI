@@ -25,7 +25,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors("AllowAll"); // <-- WICHTIG: CORS hier aktivieren
+app.UseCors("AllowAll");
 
 app.UseAuthorization();
 
